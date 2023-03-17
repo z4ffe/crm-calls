@@ -13,6 +13,7 @@ export interface INavbarData {
    id?: number
    name: string
    img: string
+   path: string
 }
 
 const navbarData: INavbarData[] = [
@@ -20,51 +21,61 @@ const navbarData: INavbarData[] = [
       id: 1,
       name: 'Итоги',
       img: chart,
+      path: '/tba',
    },
    {
       id: 2,
       name: 'Заказы',
       img: orders,
+      path: '/tba2',
    },
    {
       id: 3,
       name: 'Сообщения',
       img: mail,
+      path: '/tba3',
    },
    {
       id: 4,
       name: 'Звонки',
       img: calls,
+      path: '/calls',
    },
    {
       id: 5,
       name: 'Контрагенты',
       img: people,
+      path: '/tba4',
    },
    {
       id: 6,
       name: 'Документы',
       img: documents,
+      path: '/tba5',
    },
    {
       id: 7,
       name: 'Исполнители',
       img: perm,
+      path: '/tba6',
    },
    {
       id: 8,
       name: 'Отчёты',
       img: briefCasee,
+      path: '/tba7',
    },
    {
       id: 9,
       name: 'База знаний',
       img: library,
+      path: '/tba8',
    },
    {
       id: 10,
       name: 'Настройки',
       img: settings,
+      path: '/tba9',
    },
 ]
 

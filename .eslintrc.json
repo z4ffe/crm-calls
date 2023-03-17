@@ -31,6 +31,9 @@
     "react/react-in-jsx-scope": [
       "off"
     ],
+    "react/destructuring-assignment": [
+      "off"
+    ],
     "no-nested-ternary": [
       "off"
     ],
@@ -44,7 +47,7 @@
       "off"
     ],
     "react/jsx-props-no-spreading": [
-      "warn"
+      "off"
     ],
     "react/no-unescaped-entities": [
       "off"

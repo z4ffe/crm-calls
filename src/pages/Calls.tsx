@@ -1,6 +1,8 @@
 import {Box, Button} from '@mui/material'
 import React, {useEffect, useState} from 'react'
+import CallItem from '../components/CallItem'
 import apiInstance from '../lib/axios/apiInstance'
+import ICallData from '../types/interfaces/phoneList.interface'
 
 const Calls: React.FC = (): JSX.Element => {
    const [list, setList] = useState([])
@@ -15,18 +17,13 @@ const Calls: React.FC = (): JSX.Element => {
       getList()
          .then((res) => setList(res))
          .catch((error) => console.log(error))
-   }, [limit])
+   }, [getList])
 
    return (
-      <Box sx={{display: 'flex', flexDirection: 'column', gridArea: 'calls'}}>
-         {list.map((el: any) => {
-            return (
-               <div key={Math.random()}>
-                  <h6>{el.from_number}</h6>
-                  <p>{el.partner_data.name}</p>
-               </div>
-            )
-         })}
+      <Box sx={{display: 'flex', flexDirection: 'column', gridArea: 'calls', marginLeft: '120px'}}>
+         {list.map((el: ICallData) => (
+            <CallItem key={el.id} {...el} />
+         ))}
          <Button onClick={() => setLimit((prevState) => prevState + 10)}>Load more</Button>
       </Box>
    )

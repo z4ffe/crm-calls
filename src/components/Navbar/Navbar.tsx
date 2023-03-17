@@ -7,7 +7,7 @@ const Navbar: React.FC = (): JSX.Element => {
    return (
       <Box sx={{display: 'flex', flexDirection: 'column', color: 'white', marginTop: '32px'}}>
          {navbarData.map((el) => (
-            <NavbarItem key={el.id} name={el.name} img={el.img} />
+            <NavbarItem key={el.id} name={el.name} img={el.img} path={el.path} />
          ))}
       </Box>
    )
