@@ -10,6 +10,8 @@ const CallItem: React.FC<ICallData> = (call): JSX.Element => {
    const [record, setRecord] = useState('')
    const [recordLoading, setRecordLoading] = useState(false)
 
+   // TODO: React Query New Version
+
    const fetchRecord = async (record_id: string, partner_id: string): Promise<void> => {
       if (!call.record) return
       if (!record) {

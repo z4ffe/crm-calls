@@ -1,5 +1,6 @@
 import {Box, Button} from '@mui/material'
-import React, {useEffect, useState} from 'react'
+import {useQuery} from '@tanstack/react-query'
+import React, {useState} from 'react'
 import CallItem from '../components/CallItem'
 import apiInstance from '../lib/axios/apiInstance'
 import ICallData from '../types/interfaces/phoneList.interface'
@@ -13,15 +14,21 @@ const Calls: React.FC = (): JSX.Element => {
       return response.data.results
    }
 
-   useEffect(() => {
-      getList()
-         .then((res) => setList(res))
-         .catch((error) => console.log(error))
-   }, [getList])
+   const {
+      data: callList,
+      error: callListError,
+      isLoading: callListLoading,
+   } = useQuery({
+      queryKey: ['callList'],
+      queryFn: getList,
+   })
+
+   if (callListLoading) return <div>Loading...</div>
+   if (callListError) return <div color='red'>Error</div>
 
    return (
       <Box sx={{display: 'flex', flexDirection: 'column', gridArea: 'calls', marginLeft: '120px'}}>
-         {list.map((el: ICallData) => (
+         {callList.map((el: ICallData) => (
             <CallItem key={el.id} {...el} />
          ))}
          <Button onClick={() => setLimit((prevState) => prevState + 10)}>Load more</Button>
