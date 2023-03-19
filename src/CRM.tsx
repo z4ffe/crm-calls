@@ -24,7 +24,7 @@ const CRM = () => {
                      <Route path='calls' element={<Calls />} />
                   </Routes>
                </MainLayout>
-               <ReactQueryDevtools initialIsOpen />
+               <ReactQueryDevtools />
             </QueryClientProvider>
          </Provider>
       </BrowserRouter>

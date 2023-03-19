@@ -3,28 +3,20 @@ import React, {useState} from 'react'
 import income from '../assets/images/callStatus/income.svg'
 import outcome from '../assets/images/callStatus/outcome.svg'
 import web from '../assets/images/web.svg'
-import apiInstance from '../lib/axios/apiInstance'
+import fetchCallRecord from '../services/record.service'
 import ICallData from '../types/interfaces/phoneList.interface'
+import timeConvert from '../utils/timeConvert'
 
 const CallItem: React.FC<ICallData> = (call): JSX.Element => {
    const [record, setRecord] = useState('')
    const [recordLoading, setRecordLoading] = useState(false)
 
-   // TODO: React Query New Version
-
    const fetchRecord = async (record_id: string, partner_id: string): Promise<void> => {
       if (!call.record) return
       if (!record) {
          setRecordLoading(true)
-         const response = await apiInstance.post(
-            `/mango/getRecord?record=${record_id}&partnership_id=${partner_id}`,
-            {},
-            {
-               responseType: 'blob',
-            }
-         )
-         const audio = new Audio(URL.createObjectURL(response.data))
-         setRecord(audio.src)
+         const callRecord = await fetchCallRecord(record_id, partner_id)
+         setRecord(callRecord.src)
          setRecordLoading(false)
       }
    }
@@ -32,13 +24,6 @@ const CallItem: React.FC<ICallData> = (call): JSX.Element => {
    const handleCallStatus = (in_out: number, reason?: string): string | undefined => {
       if (in_out) return income
       if (!in_out) return outcome
-   }
-
-   const handleCallTime = (time: number): string => {
-      const minutes = Math.floor(time / 60)
-      const seconds = time - minutes * 60
-      if (minutes < 10 && seconds < 10) return `0${minutes}:0${seconds}`
-      return `${minutes}:${seconds}`
    }
 
    return (
@@ -78,13 +63,8 @@ const CallItem: React.FC<ICallData> = (call): JSX.Element => {
                Распознать
             </Button>
          )}
-         {recordLoading ? (
-            <CircularProgress size='25px' />
-         ) : !recordLoading && record ? (
-            // eslint-disable-next-line jsx-a11y/media-has-caption
-            <audio controls src={record} />
-         ) : null}
-         <Typography component='p'>{handleCallTime(call.time)}</Typography>
+         {recordLoading ? <CircularProgress size='25px' /> : !recordLoading && record ? <audio controls src={record} /> : null}
+         <Typography component='p'>{timeConvert(call.time)}</Typography>
       </Box>
    )
 }
