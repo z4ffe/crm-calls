@@ -1,4 +1,5 @@
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
 import React from 'react'
 import {Provider} from 'react-redux'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
@@ -23,6 +24,7 @@ const CRM = () => {
                      <Route path='calls' element={<Calls />} />
                   </Routes>
                </MainLayout>
+               <ReactQueryDevtools initialIsOpen />
             </QueryClientProvider>
          </Provider>
       </BrowserRouter>
