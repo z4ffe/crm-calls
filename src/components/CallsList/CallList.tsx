@@ -22,7 +22,18 @@ const CallList: React.FC = (): JSX.Element => {
    if (error) return <div color='red'>Error</div>
 
    return (
-      <Box sx={{display: 'flex', flexDirection: 'column', gridArea: 'calls', marginLeft: '120px', marginTop: '100px'}}>
+      <Box
+         sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '1440px',
+            gridArea: 'calls',
+            marginLeft: '120px',
+            marginTop: '100px',
+            backgroundColor: '#fff',
+            borderRadius: '8px',
+            marginBottom: '100px',
+         }}>
          {data?.pages.at(-1).map((el: ICallData) => (
             <CallItem key={el.id} {...el} />
          ))}

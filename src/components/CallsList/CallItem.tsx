@@ -30,7 +30,7 @@ const CallItem: React.FC<ICallData> = (call): JSX.Element => {
       <Box
          sx={{
             display: 'flex',
-            width: '1440px',
+            width: '100%',
             height: '65px',
             borderTop: '1px solid #EAF0FA',
             borderBottom: '1px solid #EAF0FA',
@@ -39,10 +39,10 @@ const CallItem: React.FC<ICallData> = (call): JSX.Element => {
             ':hover': {backgroundColor: '#EAF0FA'},
          }}
          onClick={() => fetchRecord(call.record, call.partner_data.id)}>
-         <Box sx={{display: 'flex', width: '40px'}}>
+         <Box sx={{display: 'flex', width: '70px'}}>
             <Box component='img' src={handleCallStatus(call.in_out)} />
          </Box>
-         <Box sx={{display: 'flex', width: '80px'}}>
+         <Box sx={{display: 'flex', width: '180px'}}>
             <Typography component='p' sx={{fontWeight: '400', fontSize: '15px', color: '#122945'}}>
                {call.date.slice(11, 16)}
             </Typography>
@@ -50,8 +50,8 @@ const CallItem: React.FC<ICallData> = (call): JSX.Element => {
          <Box sx={{display: 'flex', width: '86px'}}>
             <Box component='img' src={call.person_avatar} alt='avatar' />
          </Box>
-         <Box sx={{display: 'flex', width: '40px'}}>{call.from_site ? <Box component='img' src={web} alt='from site' /> : null}</Box>
-         <Box sx={{display: 'flex', width: '326px'}}>
+         <Box sx={{display: 'flex', width: '80px'}}>{call.from_site ? <Box component='img' src={web} alt='from site' /> : null}</Box>
+         <Box sx={{display: 'flex', width: '526px'}}>
             <Typography sx={{fontWeight: '400', fontSize: '15px', color: '#122945'}} component='p'>{`+7 (${call.partner_data.phone.slice(1, 4)}) ${call.partner_data.phone.slice(4, 7)}-${call.partner_data.phone.slice(
                7,
                9
@@ -73,7 +73,7 @@ const CallItem: React.FC<ICallData> = (call): JSX.Element => {
                      width: '122px',
                      height: '40px',
                      border: '1px solid #002CFB',
-                     bordeRadius: '4px',
+                     borderRadius: '4px',
                      fontWeight: '500',
                      fonSize: '14px',
                      color: '#002CFB',
