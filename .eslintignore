@@ -1,2 +1,3 @@
 dist
 vite.config.ts
+/src/components/CallsList/CallItem.tsx

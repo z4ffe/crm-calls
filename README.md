@@ -1,4 +1,4 @@
-<h3 align="center">CRM Calls</h3>
+<h3 align="center">CRM CallList</h3>
 <hr/>
 <h5 align="center">React App<br/>TypeScript, Vite, React, Redux, Material UI, Axios, SASS, React-Router-Dom</h5> 
 <hr/>
